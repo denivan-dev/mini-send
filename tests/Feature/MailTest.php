@@ -17,6 +17,8 @@ class MailTest extends TestCase
 
     /** @test */
     public function large_files_can_not_be_attached(){
+        Storage::fake('local');
+
         $bytes = str_repeat('#', PostMailRequest::MAX_FILE_SIZE_MB * 1024 * 1024);
         $base64_str = base64_encode($bytes);
 
@@ -56,7 +58,6 @@ class MailTest extends TestCase
             file_get_contents(__DIR__ . '/../test.png')
         );
         $base64_file_name = sha1($base64_file_content);
-        Log::info(__METHOD__, [$base64_file_name]);
 
         $attachments = [
             'attachments' => [

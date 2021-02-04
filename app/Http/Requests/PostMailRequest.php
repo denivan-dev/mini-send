@@ -34,6 +34,7 @@ class PostMailRequest extends FormRequest
             'from.name'  => 'sometimes|max:255',
             'subject'    => 'required|max:255',
             'content'    => 'required',
+            'type'       => 'in:text,html',
             'attachments.*.filename' => 'required_with:attachments|max:255',
             'attachments.*.content'  => 'required_with:attachments|max:' . $max_base64_len,
         ];
@@ -51,12 +52,13 @@ class PostMailRequest extends FormRequest
         $data = $this->validated();
 
         $attributes['sender_email'] = $data['from']['email'] ?? config('mail.from.address');
-        $attributes['sender_name'] = $data['from']['name'] ?? config('mail.from.name');
-        $attributes['recipient'] = $data['to']['email'];
-        $attributes['subject'] = $data['subject'];
-        $attributes['content'] = $this->sanitizeContent($data['subject']);
+        $attributes['sender_name']  = $data['from']['name'] ?? config('mail.from.name');
+        $attributes['recipient']    = $data['to']['email'];
+        $attributes['subject']      = $data['subject'];
+        $attributes['content']      = $this->sanitizeContent($data['content']);
+        $attributes['type']         = $data['type'] ?? 'html';
 
-        $attributes['files'] = $data['attachments'];
+        $attributes['files']        = $data['attachments'] ?? [];
 
         return $attributes;
     }

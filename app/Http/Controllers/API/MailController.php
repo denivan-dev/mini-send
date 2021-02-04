@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Events\EmailPosted;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostMailRequest;
 use App\Http\Responses\MailPostedResponse;
@@ -24,7 +25,7 @@ class MailController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PostMailRequest  $request
      * @return \App\Http\Responses\MailPostedResponse
      */
     public function store(PostMailRequest $request)
@@ -36,6 +37,8 @@ class MailController extends Controller
 
         $mail->status = 'posted';
         $mail->files  = $data['files'];
+
+        event(new EmailPosted($mail));
 
         return new MailPostedResponse();
     }

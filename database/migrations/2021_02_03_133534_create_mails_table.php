@@ -20,6 +20,7 @@ class CreateMailsTable extends Migration
             $table->string('recipient');
             $table->string('subject');
             $table->text('content');
+            $table->enum('type', ['text', 'html']);
             $table->timestamps();
         });
     }
