@@ -8,26 +8,29 @@ use App\Http\Requests\PostMailRequest;
 use App\Http\Responses\MailPostedResponse;
 use App\Models\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Arr;
 
 class MailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $mails = app(Pipeline::class)
+            ->send(Mail::query())
+            ->through([
+                \App\QueryFilters\Recipient::class
+            ])
+            ->thenReturn()
+            ->with('files', 'activities')
+            ->orderBy('id', 'desc')
+            ->get();
+
+
+        return $mails;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\PostMailRequest  $request
-     * @return \App\Http\Responses\MailPostedResponse
-     */
+
     public function store(PostMailRequest $request)
     {
         $data = $request->prepared();
@@ -43,35 +46,16 @@ class MailController extends Controller
         return new MailPostedResponse();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        return Mail::where('id', $id)->with('files', 'activities')->first();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

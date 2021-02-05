@@ -5,27 +5,17 @@ namespace App\Listeners;
 use App\Events\EmailPosted;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Log;
 
 class SendEmail implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         //
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  EmailPosted  $event
-     * @return void
-     */
     public function handle(EmailPosted $event)
     {
         $mail = $event->mail;
@@ -42,9 +32,10 @@ class SendEmail implements ShouldQueue
                 ->setBody(...$content);
 
             foreach ($mail->files as $attachment){
-                $message->attach($attachment['content'], [
-                    'as' => $attachment['name'],
-                ]);
+                if(File::exists($attachment['content']))
+                    $message->attach($attachment['content'], [
+                        'as' => $attachment['name'],
+                    ]);
             }
         });
         $mail->status = 'sent';

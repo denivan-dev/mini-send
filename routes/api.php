@@ -2,4 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('email', 'API\MailController');
+Route::apiResources([
+    'emails' => 'API\MailController',
+    'activities' => 'API\ActivitiesController',
+]);

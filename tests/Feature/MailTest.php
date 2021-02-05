@@ -71,7 +71,7 @@ class MailTest extends TestCase
         $data = $this->data();
         $response = $this->json(
             'POST',
-            '/api/email',
+            '/api/emails',
             array_merge($data, $attachments)
         );
 
@@ -117,7 +117,7 @@ class MailTest extends TestCase
     {
         return $this->json(
             'POST',
-            '/api/email',
+            '/api/emails',
             array_merge($this->data(), $data)
         );
     }
