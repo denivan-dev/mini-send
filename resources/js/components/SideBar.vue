@@ -1,6 +1,6 @@
 <template>
      <ul>
-         <li><router-link to="/">ACTIVITIES LIST</router-link></li>
+         <li><router-link to="/">ACTIVITY</router-link></li>
          <li><router-link to="/api-test">API TEST</router-link></li>
      </ul>
 </template>

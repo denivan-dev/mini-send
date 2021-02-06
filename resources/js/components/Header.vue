@@ -17,10 +17,10 @@
         margin: 0;
         color: #000000;
         border-radius: 5px;
+        background: #f8fafc;
     }
 
     .header-title{
-        /*font-family: 'Yusei Magic', sans-serif;*/
         text-align: right;
         font-size: 2em;
         font-family: 'Times New Roman', sans-serif;

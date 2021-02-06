@@ -1,28 +1,38 @@
 <template>
     <div>
-        <div class="email-header">
-            <div class="email-header__from">
-                From: {{ email.sender_name }} &lt;{{ email.sender_email }}&gt;
-            </div>
+        <MailHeader :mail="email" :currentStatus="currentStatus">
             <div>
-                {{ email.created_at }}
+                To: <router-link :to="/emails-list/+ email.recipient">
+                    {{ email.recipient }}
+                </router-link>
             </div>
-        </div>
-        <div>To: {{ email.recipient }}</div>
-        <div>Subject: {{ email.subject }}</div>
+        </MailHeader>
         <div v-html="email.content" class="email-content"></div>
         <pre style="padding: 5em;">{{ email }}</pre>
     </div>
 </template>
 
-
 <script>
     import axios from 'axios'
+    import MailHeader from '../components/MailHeader'
 
     export default {
+        components: {
+            MailHeader
+        },
+
         data: () => ({
             email: {}
         }),
+
+        computed: {
+            currentStatus(){
+                if(this.email.activities)
+                    return this.email.activities[this.email.activities.length - 1]
+
+                return {}
+            }
+        },
 
         mounted() {
             const emailId = this.$route.params.id;
@@ -36,10 +46,5 @@
 <style>
     .email-content{
         margin-top: 2em;
-    }
-
-    .email-header{
-        display: flex;
-        justify-content: space-between;
     }
 </style>

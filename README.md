@@ -13,4 +13,6 @@
 * php artisan test
 ### Notes
 Since API and frontend auth are not required  
-i've made it single-user.
+i've made it single-user.  
+Each item in activities list refers to a view of single email.  
+'To' field in email header refers to a list of emails for a recipient

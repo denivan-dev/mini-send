@@ -45,4 +45,8 @@
         text-decoration: none;
         color: #000000;
     }
+
+    .activity-status{
+        padding: 3px;
+    }
 </style>
