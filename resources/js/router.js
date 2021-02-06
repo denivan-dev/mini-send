@@ -15,12 +15,12 @@ export default new VueRouter({
             component: ActivitiesList
         },
         {
-            path: '/email',
+            path: '/email/:id',
             name: 'Email',
             component: Email
         },
         {
-            path: '/emails-list',
+            path: '/emails-list/:recipient_id',
             name: 'EmailsList',
             component: EmailsList
         },

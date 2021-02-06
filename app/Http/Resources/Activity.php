@@ -16,6 +16,7 @@ class Activity extends JsonResource
     {
         return [
             'id'         => $this->id,
+            'email_id'         => $this->mail->id,
             'event'      => $this->status,
             'recipient'  => $this->mail->recipient,
             'sender'  => $this->mail->sender_email,
