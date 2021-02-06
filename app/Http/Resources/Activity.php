@@ -18,6 +18,7 @@ class Activity extends JsonResource
             'id'         => $this->id,
             'event'      => $this->status,
             'recipient'  => $this->mail->recipient,
+            'sender'  => $this->mail->sender_email,
             'subject'    => $this->mail->subject,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
         ];

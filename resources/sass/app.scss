@@ -1,1 +1,30 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    overflow: hidden; /* Hide scrollbars */
+}
+
+.content{
+    padding: 0 15px;
+    margin: 4em 0;
+    height: 100vh;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+.router-link-exact-active{
+    border-right: 2px solid deeppink;
+}
