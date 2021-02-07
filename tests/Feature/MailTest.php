@@ -76,7 +76,7 @@ class MailTest extends TestCase
         );
 
         $response->assertStatus(202);
-        Storage::disk('local')->assertExists('attachments/' . $base64_file_name);
+        Storage::disk('local')->assertExists('public/attachments/' . $base64_file_name);
 
         $this->assertDatabaseHas('mails', [
             'recipient' => $data['to']['email'],

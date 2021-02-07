@@ -12,14 +12,16 @@
 
     a{
         font-size: 1.3em;
-        padding: .3em 0;
+        padding: .3em 1em;
         color: #000000;
         display: block;
+        transition: .3s;
     }
 
     a:hover{
         text-decoration: none;
         background: #f5f4f4;
+        padding-left: 1.3em;
     }
 
     ul{

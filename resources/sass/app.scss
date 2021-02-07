@@ -11,6 +11,22 @@ body {
     overflow: hidden; /* Hide scrollbars */
 }
 
+input{
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    transition: 0.2s;
+    outline: none;
+    background: rgba(248, 250, 252, 0);
+}
+
+input[type=text]:focus {
+    border: none;
+    border-bottom: 1px solid #555;
+}
+
 .content{
     padding: 0 15px;
     margin: 4em 0;

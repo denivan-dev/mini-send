@@ -25,7 +25,7 @@ class Mail extends Model
         $files = [];
         foreach ($filesData as $datum){
             $file_content = base64_decode($datum['content']);
-            $file_name = 'attachments/' . sha1($datum['content']);
+            $file_name = 'public/attachments/' . sha1($datum['content']);
             Storage::disk('local')->put($file_name, $file_content);
 
             $files[] = new File([

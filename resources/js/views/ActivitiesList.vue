@@ -54,22 +54,6 @@
 </script>
 
 <style scoped>
-    input{
-        width: 100%;
-        padding: 12px 20px;
-        box-sizing: border-box;
-        border: none;
-        border-bottom: 1px solid #ccc;
-        transition: 0.2s;
-        outline: none;
-        background: rgba(248, 250, 252, 0);
-    }
-
-    input[type=text]:focus {
-        border: none;
-        border-bottom: 1px solid #555;
-    }
-
     .activity-title{
         background: violet;
         position: -webkit-sticky;
@@ -78,6 +62,5 @@
         padding: .3em;
         margin: 1.2em 0 0 0;
         z-index: 100;
-        border-radius: 3px;
     }
 </style>

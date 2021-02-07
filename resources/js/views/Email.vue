@@ -8,7 +8,6 @@
             </div>
         </MailHeader>
         <div v-html="email.content" class="email-content"></div>
-        <pre style="padding: 5em;">{{ email }}</pre>
     </div>
 </template>
 
