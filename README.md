@@ -3,6 +3,7 @@
 * php artisan init 
 ###### Configure your environment, then:
 * php artisan migrate  
+* npm install
 * npm run dev
 ### Run application
 * php artisan serve  
