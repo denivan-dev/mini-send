@@ -15,7 +15,7 @@
         padding: .3em 1em;
         color: #000000;
         display: block;
-        transition: .3s;
+        transition: padding .3s;
     }
 
     a:hover{

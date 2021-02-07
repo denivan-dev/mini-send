@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Loader v-if="loading"></Loader>
         <div class="form-wrapper">
             <div class="data-container">
                 <div class="data-container__item">
@@ -36,9 +37,16 @@
 
 <script>
     import axios from 'axios'
+    import Loader from '../components/Loader'
 
     export default {
+        components: {
+            Loader
+        },
+
         data: () => ({
+            loading: false,
+
             requestData: {
                 to: {
                     email: ''
@@ -62,10 +70,14 @@
         methods: {
             postMail(){
                 this.responseData = {};
+                this.loading = true;
                 let requestData = this.composeData();
 
                 axios.post('/api/emails', requestData)
-                    .then(response => this.responseData = response.data)
+                    .then(response => {
+                        this.responseData = response.data;
+                        this.loading = false;
+                    })
                     .catch(error => this.responseData = error.response.data)
             },
 

@@ -10949,6 +10949,28 @@ body {
   /* Hide scrollbars */
 }
 
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.icon {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+
+.icon-attach {
+  content: url(/css/icons/attach.svg);
+  transform: rotate(45deg);
+}
+
+.icon-download {
+  content: url(/css/icons/download.svg);
+  width: 15px;
+}
+
 input {
   width: 100%;
   padding: 12px 20px;
@@ -10979,6 +11001,16 @@ input[type=text]:focus {
 }
 
 .router-link-exact-active {
-  border-right: 2px solid deeppink;
+  border-left: 3px solid #ed82ee;
+}
+
+.activity-title {
+  background: #ed82ee;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 81px;
+  padding: 0.3em;
+  margin: 1.2em 0 0 0;
+  z-index: 100;
 }
 

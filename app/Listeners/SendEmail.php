@@ -6,6 +6,7 @@ use App\Events\EmailPosted;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SendEmail implements ShouldQueue
@@ -30,11 +31,17 @@ class SendEmail implements ShouldQueue
                 ->from($mail->sender_email, $mail->sender_name)
                 ->subject($mail->subject)
                 ->setBody(...$content);
-
+            Log::info(__METHOD__, $mail->files->toArray());
             foreach ($mail->files as $attachment){
-                if(File::exists($attachment['content']))
-                    $message->attach($attachment['content'], [
-                        'as' => $attachment['name'],
+                $path = str_replace(
+                    '/storage/attachments/',
+                    storage_path('app/public/attachments/'),
+                    $attachment['path']
+                );
+
+                if(File::exists($path))
+                    $message->attach($path, [
+                        'as' => $attachment['client_name'],
                     ]);
             }
         });
