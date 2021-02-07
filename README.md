@@ -1,6 +1,6 @@
 ### Installation
 * composer install  
-* php artisan storage:link  
+* php artisan init 
 ###### Configure your environment, then:
 * php artisan migrate  
 * npm run dev
