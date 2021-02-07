@@ -38,9 +38,9 @@ class Init extends Command
      */
     public function handle()
     {
-        `cp '.env.example', '.env'`;
+        `cp '.env.example' '.env'`;
         Artisan::call('key:generate --ansi');
-        Artisan::call('storage:link ');
+        Artisan::call('storage:link');
         $this->info('Done! Please configure your environment in .env file.');
         return 0;
     }
