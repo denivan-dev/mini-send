@@ -7,7 +7,7 @@
                 </router-link>
             </div>
         </MailHeader>
-        <div class="attachment-container">
+        <div class="attachment-container" v-if="email.files && email.files.length > 0">
             <a  class="attachment"
                 v-for="attachment in email.files"
                 :title="attachment.client_name"

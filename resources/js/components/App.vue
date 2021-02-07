@@ -1,8 +1,8 @@
 <template>
-    <div class="container">
+    <div class="container-lg">
         <div class="row">
-            <SideBar class="col-md-2"></SideBar>
-            <router-view class="col-md-10 container content"></router-view>
+            <SideBar class="col-2"></SideBar>
+            <router-view class="col-10 container content"></router-view>
         </div>
     </div>
 </template>
