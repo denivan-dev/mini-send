@@ -1,6 +1,6 @@
 ### Installation
 * composer install  
-* php artisan init 
+* php artisan minisend:init 
 ###### Configure your environment, then:
 * php artisan migrate  
 * npm install

@@ -12,7 +12,7 @@ class Init extends Command
      *
      * @var string
      */
-    protected $signature = 'init';
+    protected $signature = 'minisend:init';
 
     /**
      * The console command description.
